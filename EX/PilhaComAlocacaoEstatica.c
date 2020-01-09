@@ -3,7 +3,7 @@
 #include <Ctype.h>
 
 /*
-	CRIA UMA PILHA EM ALOCAÇÃO ESTÁTICA (COM TESTES)
+-----======-----CRIA UMA PILHA EM ALOCAÇÃO ESTÁTICA (COM TESTES)-----======-----
 */
 
 typedef struct pilha{
@@ -11,6 +11,7 @@ typedef struct pilha{
     char item[10];
 } PILHA;
 
+//REFERENCIA DE FUNCOES PARA MAIN 
 void create(PILHA *pilha);
 void destroy(PILHA *pilha);
 int isfull(PILHA *pilha);
@@ -52,22 +53,27 @@ int main(void){
     return 0;
 }
 
+//CRIA PILHA
 void create(PILHA *pilha){
     pilha->topo = -1;
 }
 
+//DESTROI PILHA
 void destroy(PILHA *pilha){
     pilha->topo = -1;
 }
 
+//VERIFICA PILHA CHEIA
 int isfull(PILHA *pilha){
     return pilha->topo == 9;
 }
 
+//VERIFICA PILHA VAZIA
 int isempty(PILHA *pilha){
     return pilha->topo == -1;
 }
 
+//INSERE (PUSH) ELEMENTO NA PILHA
 void push(PILHA *pilha, char x){
     if (isfull(pilha)){
         puts("Overflow");
@@ -77,6 +83,7 @@ void push(PILHA *pilha, char x){
     pilha->item[pilha->topo] = x;
 }
 
+//REMOVE (POP) ELEMENTO DA PILHA
 char pop(PILHA *pilha){
     char aux;
     if (isempty(pilha)){
@@ -88,6 +95,7 @@ char pop(PILHA *pilha){
     return aux;
 }
 
+//RETORNA VALOR DO TOPO DA PILHA
 char top(PILHA *pilha){
     if (isempty(pilha)){
         printf("Underflow\n");
@@ -96,6 +104,7 @@ char top(PILHA *pilha){
     return pilha->item[pilha->topo];
 }
 
+//FUNCAO PALINDROMO
 int ispalindromo(char *str){
     PILHA pilha;
     create(&pilha);
@@ -108,6 +117,7 @@ int ispalindromo(char *str){
     return 1;
 }
 
+//FUNCAO INVERTE PILHA
 void inverte(char *str){
     PILHA pilha;
     create(&pilha);
